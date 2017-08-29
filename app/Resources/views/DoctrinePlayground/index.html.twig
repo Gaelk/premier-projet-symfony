@@ -1,0 +1,17 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}AppBundle:DoctrinePlayground:newBook{% endblock %}
+
+{% block body %}
+    <h1> vous etes sur DoctrinePlayground :newBook page</h1>
+
+    <ul>
+        {% for book in books %}
+        <li>
+            <a href="{{ path('book_details', {'id': book.id}) }}"> {{ book.title }}</a>
+        </li>
+        {%  endfor %}
+    </ul>
+
+
+{% endblock %}

@@ -53,18 +53,23 @@ class DefaultController extends Controller
 
     /**
      * @Route("/hello/{name}/{age}",
+     *     name="hello",
      *     defaults={"name": "world"},
      *     requirements={"age":"\d{1,3}","name":"\D+"}
      *     )
      * @return Response
      */
     public function helloAction(Request $request, $name, $age){
+        //creation d'un message flash
+  $this->addFlash("info","hello");
+
         $key=$request->get("key");
         //$key=$_GET["key"];
         if($key=="123"){
-            //$response= new Response("<h1>hello $name vous avez $age</h1>");
-            //creation d'un fichier sans instance
-            //  acceder à une page  .twig grace  en avec les para
+            /**$response= new Response("<h1>hello $name vous avez $age</h1>");
+            *creation d'un fichier sans instance
+            *  acceder à une page  .twig grace  en avec les para  */
+
             $response=$this->render("default/hello.html.twig",["name"=>$name, "age"=>$age]);
 
 
