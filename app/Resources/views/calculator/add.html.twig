@@ -27,24 +27,24 @@
 
 
 
-    <table>
+    <table class="table table-responsive">
         <thead >
-        <th >id</th>
-        <th>Nom</th>
-        <th>email</th>
+            {% for colName in clients[0]  | keys %}
+                    <th >{{ colName }}</th>
+            {% endfor %}
+
         </thead>
         <tbody >
         {% for client in clients %}
             <tr>
-                <td>{{ client.id }}</td>
-                <td>{{ client.nom }}</td>
-                <td>{{ client.email }}</td>
-
+                {% for colName in client | keys %}
+                    <td> {{ client[colName] }}</td>
+                {% endfor %}
             </tr>
+
         {% endfor %}
 
         </tbody>
-
 
     </table>
 

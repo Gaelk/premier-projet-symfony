@@ -1,7 +1,12 @@
-<!DOCTYPE>
+{#}<!DOCTYPE>
 <html>
     <body>
         <h1>hello {{ name }} vous avez {{ age }} ans  </h1>
     </body>
 </html>
 
+#}
+{% extends 'base.html.twig' %}
+{% block body %}
+    <h1>hello {{ name }} vous avez {{ age }} ans  </h1>
+{% endblock %}

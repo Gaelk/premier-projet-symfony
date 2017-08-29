@@ -19,8 +19,9 @@ class calculatorController extends Controller
 
     {
         $clients=[
-            ["nom"=>"Pierre", "id"=>"3", "email"=>"pierro.p@gmail.com"],
-            ["nom"=>"mwana", "prenom"=>"mayi", "id"=>"1", "email"=>"mwana_mayi@gtk.net"]
+            ["nom"=>"Pierre", "prenom"=>"blaise", "id"=>"3", "email"=>"pierro.p@gmail.com"],
+            ["nom"=>"dede", "prenom"=>"patrick", "id"=>"1", "email"=>"manzabi_tresor@gii.net"],
+            ["nom"=>"blaiss", "prenom"=>"farrid", "id"=>"1", "email"=>"fafa@gtk.fr"]
         ];
         $result=$n1 + $n2;
         return $this->render(':calculator:add.html.twig', array("n1"=>$n1, "n2"=>$n2,"result"=>$result, 'cltr'=>$this,

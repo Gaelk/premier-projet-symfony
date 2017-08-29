@@ -16,7 +16,9 @@
             {% endblock %}
         </header>
         <nav>
-            {% block nav %}{% endblock %}
+            {% block nav %}
+                {{ include('_partials/navbar.html.twig') }}
+            {% endblock %}
         </nav>
 
         <div class="row">
