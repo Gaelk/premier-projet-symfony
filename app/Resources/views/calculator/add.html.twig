@@ -5,4 +5,49 @@
 {% block body %}
 <h1>Welcome to the calculator:add page</h1>
     {{ n1 }} plus {{ n2 }} est égat à {{ result }}
+
+    {{ dump(cltr) }}
+
+    {{ yesterday |date('d/m/Y') }}
+
+    <ul>
+        {% for item in list |sort| slice(0,3) %}
+            <li>
+                {{ item }}
+            </li>
+            {% else %}
+            <li> Pas d'elements dans le tableau liste</li>
+        {% endfor %}
+    </ul>
+
+
+        {% for x in 1..20 if x %2==1 %}
+                {{ x }}
+        {% endfor %}
+
+
+
+    <table>
+        <thead >
+        <th >id</th>
+        <th>Nom</th>
+        <th>email</th>
+        </thead>
+        <tbody >
+        {% for client in clients %}
+            <tr>
+                <td>{{ client.id }}</td>
+                <td>{{ client.nom }}</td>
+                <td>{{ client.email }}</td>
+
+            </tr>
+        {% endfor %}
+
+        </tbody>
+
+
+    </table>
+
+
+
 {% endblock %}

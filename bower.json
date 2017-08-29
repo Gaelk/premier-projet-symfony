@@ -1,0 +1,20 @@
+{
+  "name": "premier-projet",
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "https://github.com/Gaelk/premier-projet-symfony",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "authors": [
+    "formation <icebrg07@live.fr>"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}
