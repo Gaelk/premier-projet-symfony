@@ -4,12 +4,16 @@ namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints\Date;
+use Symfony\Component\Validator\Constraints\DateTime;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * book
  *
  * @ORM\Table(name="book")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\bookRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class book
 {
@@ -25,15 +29,32 @@ class book
     /**
      * @var string
      *
+     * @Assert\NotBlank (message="Le titre ne peut être vide")
+     * @Assert\Length(min="3", max="80",
+     *      minMessage="Le titre doit comporter plus de {{limit}}",
+     *      maxMessage="le titre doit comporter moins de {{limit}}")
      * @ORM\Column(name="title", type="string", length=80)
      */
     private $title;
+
+    /**
+     * @var DateTime
+     * @ORM\Column(name="created_at", type="datetime")
+     */
+    private $createdAt;
+
+    /**
+     * @var DateTime
+     * @ORM\Column(name="updated_at", type="datetime")
+     */
+    private $updatedAt;
 
 
 
     /**
      * @var string
-     *
+     * @Assert\Range(min="2", max="80",
+     *      invalidMessage="le prix doit etre compris entre {{min}} et {{max}}")
      * @ORM\Column(name="price", type="decimal", precision=4, scale=2)
      */
     private $price;
@@ -54,7 +75,7 @@ class book
 
     /**
      * @var ArrayCollection
-     *
+     * @Assert\Count(min="1", max="4")
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Author", inversedBy="books", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
@@ -207,5 +228,15 @@ class book
     public function getAuthors()
     {
         return $this->authors;
+    }
+
+    /**
+     * @ORM\PrePersist()
+     */
+    public function prePersistEvent(){
+        $this->createdAt= new \DateTime();
+        $this->updatedAt=new  \DateTime();
+
+
     }
 }
