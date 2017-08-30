@@ -5,6 +5,19 @@
 {% block body %}
 <h1> vous etes sur DoctrinePlayground :details</h1>
 
-        {{ dump(book) }}
+    <h2>{{ book.title }}</h2>
+
+    <p>
+            edité par: {{ book.publisher.name }}
+            le {{ book.publishedAt|date("d/m/y") }}
+    </p>
+    <p> prix public est de :{{ book.price }}   </p>
+
+    <h3>Auteurs</h3>
+    <ul>
+        {% for author in book.authors %}
+            <li>{{ author.firstName }} {{ author.name }}</li>
+        {% endfor %}
+    </ul>
 
 {% endblock %}
